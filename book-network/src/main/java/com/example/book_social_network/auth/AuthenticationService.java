@@ -43,7 +43,11 @@ public class AuthenticationService {
                 .roles(List.of(userRole))
                 .build();
         userRepository.save(user);
-        sendValidationEmail(user);
+        try {
+            sendValidationEmail(user);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void sendValidationEmail(User user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
@@ -70,6 +74,7 @@ public class AuthenticationService {
 
         return generatedToken;
     }
+
     private String generateActivationCode(int length){
         String characters = "0123456789";
         StringBuilder codeBuilder = new StringBuilder();
