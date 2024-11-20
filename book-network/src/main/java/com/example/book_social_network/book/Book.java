@@ -28,6 +28,7 @@ public class Book extends BaseEntity {
     private String isbn;
     private String synopsis;
     private String bookCover;
+    // bookCover is a string that will contain the path to the book cover image
     private boolean archived;
     private boolean shareable;
 
