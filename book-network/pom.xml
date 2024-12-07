@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>book-social-network</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>book-social-network</name>
+	<artifactId>book-network</artifactId>
+	<version>1.0.0</version>
+	<name>book-network-api</name>
 	<description>Spring Boot project for book social network</description>
 	<url/>
 	<licenses>
