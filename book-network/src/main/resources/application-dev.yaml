@@ -14,10 +14,10 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
-    host: smtp.gmail.com
-    port: 465
-    username: dachraouia193@gmail.com
-    password: vmhqocpefvagjlre
+    host: localhost
+    port: 1025
+    username: ahmed
+    password: ahmed
     properties:
       mail:
         smtp:
@@ -27,7 +27,9 @@ spring:
             trust: "*"
         starttls:
           enabled: true
-    protocol: smtp
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
 application:
   security:
     jwt:
@@ -36,6 +38,8 @@ application:
   mailing:
     frontend:
       activation-url: http://localhost:4200/activate-account
+  cors:
+    origins: http://localhost:4200,http://localhost:8080
   file:
     upload:
       photos-output-path: ./uploads

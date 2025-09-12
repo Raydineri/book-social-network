@@ -25,4 +25,5 @@ public class Token {
     @ManyToOne
     @JoinColumn(name = "userId", nullable = false) //foreign key
     private User user;
+    // private User user;
 }

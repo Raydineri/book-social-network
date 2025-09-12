@@ -20,9 +20,23 @@ services:
         ports:
             - 1080:1080
             - 1025:1025
+#keycloak image with the version 24.0.2
+
+    keycloak:
+        container_name: keycloak-bsn
+        image: quay.io/keycloak/keycloak:24.0.2
+        ports:
+            - 9090:8080
+        environment:
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: admin
+        networks:
+            - spring-demo
+        command:
+            - "start-dev"
     bsn-api:
         container_name: bsn-api
-        image: bsn/bsn:1.0.3
+        image: bsn/bsn:1.0.1
         ports:
             - 8088:8088
         networks:
@@ -30,15 +44,15 @@ services:
         depends_on:
             - postgres
     bsn-ui:
-       container_name: bsn-ui
-       image: bsn/bsn-ui:1.0.0
-       ports:
+        container_name: bsn-ui
+        image: bsn/bsn-ui:1.0.0
+        ports:
             - 8080:80
             # to change the port of the container
-       networks:
+        networks:
             - spring-demo
-       depends_on:
-           - bsn-api
+        depends_on:
+            - bsn-api
 
 
 networks:

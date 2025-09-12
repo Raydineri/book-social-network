@@ -1,6 +1,7 @@
 package com.example.book_social_network.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -25,7 +26,8 @@ import java.util.List;
 public class BeanConfig {
 
     private final UserDetailsService userDetailsService;
-
+    @Value("${application.cors.origins:*}")
+    private List<String> allowedOrigins;
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -35,6 +37,7 @@ public class BeanConfig {
         return authProvider;
 
         // Verify that the password encoder is configured correctly
+        // no need to call the password encoder directly
     }
 
     @Bean
@@ -55,22 +58,10 @@ public class BeanConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:4200" ,"http://localhost:8080")); // Your Angular app URL and backend
-        config.setAllowedHeaders(Arrays.asList(
-                HttpHeaders.ORIGIN,
-                HttpHeaders.CONTENT_TYPE,
-                HttpHeaders.ACCEPT,
-                HttpHeaders.AUTHORIZATION // For sending JWT token
-        ));
-        config.setAllowedMethods(Arrays.asList(
-                "GET",
-                "POST",
-                "DELETE",
-                "PUT",
-                "PATCH",
-                "OPTIONS" // Include OPTIONS for preflight requests
-        ));
+        //config.setAllowCredentials(true);
+        config.setAllowedOrigins(allowedOrigins); // Your Angular app URL and backend
+        config.setAllowedHeaders(Arrays.asList("*")); // not recommended for production
+        config.setAllowedMethods(Arrays.asList("*"));   // not recommended for production
 
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);

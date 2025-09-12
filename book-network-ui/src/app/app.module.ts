@@ -12,6 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import {HttpTokenInterceptor} from './services/interceptor/http-token.interceptor';
 import { BookListComponent } from './modules/book/pages/book-list/book-list.component';
 import {BookModule} from "./modules/book/book.module";
+import {ApiModule} from "./services/api.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {BookModule} from "./modules/book/book.module";
     HttpClientModule,
     FormsModule,
     CodeInputModule,
-    BookModule
+    BookModule,
+    //ApiModule.forRoot({rootUrl: 'http://localhost:8088/api/v1'})
   ],
   providers: [
     HttpClient,
