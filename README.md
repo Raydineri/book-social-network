@@ -45,15 +45,17 @@ The backend is built with **Spring Boot 3**, and the frontend is developed with 
 
 ---
 
-## Diagrams
+#### Class diagram
+![Class diagram](screenshots/class-diagram.png)
 
-* **Class Diagram**
-  *(add your class diagram image here)*
+#### Spring security diagram
+![Security diagram](screenshots/security.png)
 
-* **Security Diagram**
-  *(add your Spring Security + JWT workflow diagram here)*
+#### Backend pipeline
+![Security diagram](screenshots/be-pipeline.png)
 
----
+#### Backend pipeline
+![Security diagram](screenshots/fe-pipeline.png)
 
 ## Technologies Used
 
