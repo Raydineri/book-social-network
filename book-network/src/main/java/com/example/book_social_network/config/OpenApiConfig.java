@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         info = @Info(
                 contact = @Contact(
                         name = "RayenBo",
-                        email = "raydineri07@gmail.com",
+                        email = "rayen.benothman07@gmail.com",
                         url = "https://www.linkedin.com/in/benothman-rayen"
                 ),
                 description = "Open API for Spring security",
@@ -39,11 +39,10 @@ import io.swagger.v3.oas.annotations.servers.Server;
         },
         security = {
                 @SecurityRequirement(
-                           name = "bearerAuth"
+                        name = "bearerAuth"
                 )
 
         }
-
 
 )
 @SecurityScheme(
